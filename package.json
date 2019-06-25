@@ -1,0 +1,25 @@
+{
+  "name": "demo_nodejs_withmysql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tps2015gh/demo_nodejs_withmysql.git"
+  },
+  "author": "Thitipong Samranvanich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tps2015gh/demo_nodejs_withmysql/issues"
+  },
+  "homepage": "https://github.com/tps2015gh/demo_nodejs_withmysql#readme",
+  "devDependencies": {
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "@types/angular": "^1.6.54"
+  }
+}
