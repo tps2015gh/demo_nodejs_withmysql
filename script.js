@@ -6,7 +6,7 @@ module.component("item", {
         + "<div ng-class='$ctrl.class' "
         + "   "
         + " ng-init='$ctrl.onInit()'>"
-        + "<button ng-click='$ctrl.onclick();'>change type={{$ctrl.type}}</button>&nbsp;"
+        + "<button ng-click='$ctrl.onclick();$ctrl.onchangetype(2);'>change type={{$ctrl.type}}</button>&nbsp;"
         + "{{$ctrl.title}} : {{$ctrl.id}} : '{{$ctrl.data}}' "
         + "</div>"
         + "<div ng-if=\" $ctrl.showRef==true \">"
@@ -53,7 +53,7 @@ module.component("item", {
             "https://brianflove.com/2016/12/26/typing-up-your-angular-1-app/"
         ];
         this.onclick = function () {
-            this.onchangetype(); // raise event to upper
+            //this.onchangetype() // raise event to upper
             this.temp = "CLICKED";
             this.type += 1;
             if (this.type > 2) {
@@ -71,14 +71,14 @@ angular.element(document).ready(function () {
 //======================
 module.component("lists", {
     template: +"<div ng-init='$ctrl.init()'> "
-        + "<div style='border:2px solid silver;max-width:20cm;background-color:rgb(240, 240, 255);'>"
-        + "List:<BR>...."
+        + "<div style='padding:10px;border:2px solid silver;max-width:20cm;background-color:rgb(240, 240, 255);'>"
+        + "<h3>Lists Component:</h3>"
         + "<BR> LOI= {{$ctrl.listOfItem}} <BR>"
         + "<br>"
         + "<div ng-repeat=' (i,x) in $ctrl.listOfItem '>"
         + "<br><button ng-click='$ctrl.select(i)'> select row:{{i}}</button>"
         + "<span ng-show='i==$ctrl.idx' style='color:red;padding-left:10px;'>SELECTED</span>"
-        + " <item  onchangetype='$ctrl.upper_changetype' type='x.type' id='x.id' data='x.text'></item>"
+        + " <item  onchangetype='$ctrl.msg = 123 ' type='x.type' id='x.id' data='x.text'></item>"
         + ""
         + "</div>"
         + "<br><BR>"
@@ -153,8 +153,8 @@ module.component("lists", {
                     this.idx += 1;
                 }
             },
-            this.upper_changetype = function (idx) {
-                this.temp = "on ITEM CHANGE TYPE " + idx;
+            this.upper_changetype = function () {
+                this.temp = "on ITEM CHANGE TYPE ";
             }
             , this.save = function () {
                 var json_lists_items = JSON.stringify(this.listOfItem);
