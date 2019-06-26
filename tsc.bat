@@ -1,1 +1,1 @@
-node_modules\.bin\tsc  --watch
+start node_modules\.bin\tsc  --watch

@@ -1,0 +1,21 @@
+   .hero_comp_null {background-color:lightgray;
+    border:2px solid orange;
+    padding:12px;
+    font-size:20px;
+    font-family: Helvetica;
+    max-width:10cm;
+    }    
+   .hero_comp1 {background-color:lightyellow;
+		border:2px solid orange;
+		padding:12px;
+		font-size:20px;
+		font-family: Helvetica;
+		max-width:10cm;
+		}
+   .hero_comp2 {background-color:lightgreen;
+    border:2px solid orange;
+    padding:12px;
+    font-size:20px;
+    font-family: Helvetica;
+    max-width:10cm;
+    }
