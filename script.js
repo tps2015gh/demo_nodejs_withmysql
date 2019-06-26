@@ -16,9 +16,9 @@ module.component("item", {
         + "</div> "
         + "</div> ",
     bindings: {
-        id: '@',
-        data: '@',
-        type: '@',
+        id: '=',
+        data: '=',
+        type: '=',
         showRef: '=',
         selected: '@',
         onchangetype: '&'
@@ -70,21 +70,27 @@ angular.element(document).ready(function () {
 });
 //======================
 module.component("lists", {
-    template: "<div style='border:2px solid silver;max-width:20cm;background-color:rgb(240, 240, 255);'>"
+    template: +"<div ng-init='$ctrl.init()'> "
+        + "<div style='border:2px solid silver;max-width:20cm;background-color:rgb(240, 240, 255);'>"
         + "List:<BR>...."
         + "<BR> LOI= {{$ctrl.listOfItem}} <BR>"
         + "<br>"
         + "<div ng-repeat=' (i,x) in $ctrl.listOfItem '>"
         + "<br><button ng-click='$ctrl.select(i)'> select row:{{i}}</button>"
         + "<span ng-show='i==$ctrl.idx' style='color:red;padding-left:10px;'>SELECTED</span>"
-        + " <item  onchangetype='$ctrl.upper_changetype' type='{{x.type}}' id='{{x.id}}' data='{{x.text}}'></item>"
+        + " <item  onchangetype='$ctrl.upper_changetype' type='x.type' id='x.id' data='x.text'></item>"
         + ""
         + "</div>"
         + "<br><BR>"
         + "<button ng-click='$ctrl.moveup()' >up</button>"
         + "<button ng-click='$ctrl.movedown()' >down</button>"
         + " TEMP = {{$ctrl.temp}} "
+        + "<br><br> <button ng-click='$ctrl.save()' style='color:blue;font-weight:bold;font-size:20px;'>save</button>"
+        + "<br>{{$ctrl.msg}}<br>"
         + "<br><BR><br>"
+        + "<br>ListOfItem= <font color=red>{{$ctrl.listOfItem}}</font>"
+        + "<br><br>"
+        + "</div>"
         + "</div>",
     bindings: {
         data: '=',
@@ -92,14 +98,34 @@ module.component("lists", {
     controller: function listsController() {
         this.idx = 0;
         this.temp = "TEMP";
-        this.listOfItem =
-            [
-                { text: 'change server appoint', type: 0, id: 1 },
-                { text: 'modify appoint', type: 0, id: 2 },
-                { text: 'report seminar', type: 1, id: 3 },
-                { text: 'add user appoint', type: 1, id: 4 },
-                { text: 'create this demo', type: 2, id: 5 }
-            ]
+        this.msg = "msg...";
+        this.listOfItem = [];
+        this.init = function () {
+            console.log("list . init ");
+            var lists_items = localStorage.getItem("lists_items");
+            if (lists_items == null) {
+                lists_items = [
+                    { text: 'change server appoint', type: 0, id: 1 },
+                    { text: 'modify appoint', type: 0, id: 2 },
+                    { text: 'report seminar', type: 1, id: 3 },
+                    { text: 'add user appoint', type: 1, id: 4 },
+                    { text: 'create this demo', type: 2, id: 5 }
+                ];
+                if (window.localStorage) {
+                    // localStorage can be used
+                    console.log("localstorage ok ");
+                    var json_lists_items = JSON.stringify(lists_items);
+                    localStorage.setItem("lists_items", json_lists_items);
+                }
+                else {
+                    console.log("localstorage no");
+                    // can't be used
+                }
+            } // if 
+            var json_lists_items2 = localStorage.getItem("lists_items");
+            this.listOfItem = JSON.parse(json_lists_items2);
+        }; // init 
+        this.init()
             , this.select = function (i) {
                 this.idx = i;
             }
@@ -123,6 +149,12 @@ module.component("lists", {
             },
             this.upper_changetype = function (idx) {
                 this.temp = "on ITEM CHANGE TYPE " + idx;
+            }
+            , this.save = function () {
+                var json_lists_items = JSON.stringify(this.listOfItem);
+                localStorage.setItem("lists_items", json_lists_items);
+                this.msg = "saved data  \n" + json_lists_items
+                    + "\n\n ===================== \n\n";
             };
     } // controller
     ,
