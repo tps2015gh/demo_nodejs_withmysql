@@ -4,6 +4,7 @@
     "target": "es5"
   },
   "files": [
+  	"component1.ts",
     "script.ts"
   ]
 }

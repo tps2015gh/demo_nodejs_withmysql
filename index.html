@@ -15,18 +15,25 @@
  
   </head>
 
-  <body>
-	index.html
+  <body ng-app="myApp" ng-controller="myAppController" 
+      ng-init="oninit()">
+	index.html  {{1+2}} 
+   
     <br> 
+    <h3 style="color:red;"><u><b>Note:</b></u> onchangetype( ) event not raise in lists component </h3>
+
+ 
+     1+3 = {{1+2}} 
+    <lists ></lists>
+    <hr>
+    LOI = {{listOfItem}} /
+    {{1+2}}
+
     <br>
-    <heros type="" data="change server appoint"></heros><br>
-    <heros type="" data="modify appoint"></heros><br>
-    <heros type="1" data="report seminar" ></heros><br>
-    <heros type="1" data="add user appoint"></heros><br>
-    <heros type="" data="create this demo"></heros><br>
-    <heros type="2" data="git push this demo"></heros><br>
-    <heros type="2" data="git push"></heros><br>
+    <br>
+    <br>
      
   </body>
+ 
 
 </html>
