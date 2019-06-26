@@ -100,10 +100,16 @@ module.component("lists", {
         this.temp = "TEMP";
         this.msg = "msg...";
         this.listOfItem = [];
+        var item_type = /** @class */ (function () {
+            function item_type() {
+            }
+            return item_type;
+        }());
         this.init = function () {
             console.log("list . init ");
-            var lists_items = localStorage.getItem("lists_items");
-            if (lists_items == null) {
+            var lists_items;
+            var json_lists_items = localStorage.getItem("lists_items");
+            if (json_lists_items == null) {
                 lists_items = [
                     { text: 'change server appoint', type: 0, id: 1 },
                     { text: 'modify appoint', type: 0, id: 2 },

@@ -22,7 +22,7 @@ module.component("item", {
     + "</div> "
   ,
   bindings :{
-    id: '='
+    id: '=',
     data: '=',
     type: '=',
     showRef : '=',
@@ -111,11 +111,14 @@ module.component("lists",{
     this.temp = "TEMP";
     this.msg = "msg...";
     this.listOfItem =  [] ;
-
+    class item_type{
+         text: string; type: number; id: number; 
+    }
     this.init = function (){
         console.log("list . init ")
-        var lists_items = localStorage.getItem("lists_items");
-        if(lists_items == null){
+        var lists_items : item_type[]
+        var json_lists_items = localStorage.getItem("lists_items")     
+        if( json_lists_items == null){
             lists_items =     [
                   {text:'change server appoint',type:0,id:1}
                   ,{text:'modify appoint',type:0,id:2}
@@ -178,5 +181,5 @@ module.component("lists",{
 })
 
 module.controller("myAppController", function(){
-  this.listOfItem = [1,2,3]
-)
+   this.listOfItem = [1,2,3]
+ })
