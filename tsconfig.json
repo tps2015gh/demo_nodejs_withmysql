@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5"
+    /*"module": "commonjs",*/
+    "module":"system",
+    "target": "es5",
+    "outFile": "dist/script_all.js"
   },
   "files": [
+  	"script_app.ts",
+  	"script_comp1.ts",
   	"component1.ts",
     "script.ts"
   ]

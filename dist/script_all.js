@@ -1,5 +1,6 @@
-//var module = angular.module("mySuperAwesomeApp", []);
+/* script_app.js start */
 var module = angular.module("myApp", []);
+/*   script_comp1.ts start */
 module.component("item", {
     template: ""
         + ""
@@ -68,6 +69,9 @@ angular.element(document).ready(function () {
     console.log("OK, REF = https://brianflove.com/2016/12/26/typing-up-your-angular-1-app/");
     angular.bootstrap(document, ["myApp"]);
 });
+console.log("script_comp1.ts end ");
+//var module = angular.module("mySuperAwesomeApp", []);
+/* script.ts start */
 //======================
 module.component("lists", {
     template: +"<div ng-init='$ctrl.init()'> "
@@ -161,6 +165,7 @@ module.component("lists", {
                 localStorage.setItem("lists_items", json_lists_items);
                 this.msg = "saved data  \n" + json_lists_items
                     + "\n\n ===================== \n\n";
+                window.alert("SAVE to localStorage OK");
             };
     } // controller
     ,
